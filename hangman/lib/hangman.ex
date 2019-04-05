@@ -1,18 +1,6 @@
+#API CODE ONLY
 defmodule Hangman do
-  @moduledoc """
-  Documentation for Hangman.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Hangman.hello()
-      :world
-
-  """
   def hello do
-    :world
+    IO.puts Dictionary.random_word()
   end
 end
