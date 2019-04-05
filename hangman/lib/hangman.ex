@@ -1,6 +1,6 @@
 #API CODE ONLY
 defmodule Hangman do
-  def hello do
-    IO.puts Dictionary.random_word()
+  def new_game() do
+
   end
 end
