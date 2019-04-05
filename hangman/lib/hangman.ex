@@ -1,18 +1,7 @@
+#API CODE ONLY
 defmodule Hangman do
-  @moduledoc """
-  Documentation for Hangman.
-  """
+  alias Hangman.Game #will now refer to only the part after the period ""
 
-  @doc """
-  Hello world.
+  defdelegate new_game(), to: Game
 
-  ## Examples
-
-      iex> Hangman.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
 end
