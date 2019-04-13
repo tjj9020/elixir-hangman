@@ -22,21 +22,21 @@ defmodule Hangman.Game do
   end
 
   def make_move(game, guess) do
-    game = accept_move(game, guess, MapSet.member?(game.used, guess))
+    accept_move(game, guess, MapSet.member?(game.used, guess))
   end
 
   def tally(game) do
     %{
       game_state: game.game_state,
       turns_left: game.turns_left,
-      letters: game.letters |> reveal_guessed(game.used)
+      letters: game.letters |> reveal_guessed(game.used),
     }
   end
 
   ###################################################################
 
 
-  defp accept_move(game, guess, _already_guessed = true) do
+  defp accept_move(game, _guess, _already_guessed = true) do
     Map.put(game, :game_state, :already_used )
   end
 
@@ -53,7 +53,7 @@ defmodule Hangman.Game do
   end
 
   defp score_guess(game = %{ turns_left: 1 }, _not_good_guess) do
-    %{ game | game_state: :lost }
+    Map.put(game, :game_state, :lost)
   end
 
   defp score_guess(game = %{ turns_left: turns_left }, _not_good_guess) do
@@ -69,7 +69,7 @@ defmodule Hangman.Game do
   end
 
   defp reveal_letter(letter, _in_word = true), do: letter
-  defp reveal_letter(letter, _not_in_word), do: "_"
+  defp reveal_letter(_letter, _not_in_word), do: "_"
 
   defp maybe_won(true), do: :won
   defp maybe_won(_), do: :good_guess
