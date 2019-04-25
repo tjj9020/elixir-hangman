@@ -9,7 +9,7 @@ defmodule Dictionary.WordList do
     def random_word() do
       Agent.get(@me, &Enum.random/1)
     end
-    
+
     def word_list do
       "../../assets/words.txt"
       |> Path.expand(__DIR__)
